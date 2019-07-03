@@ -1,0 +1,261 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Root.master.cs" Inherits="SoroZieApp.Root" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server" enableviewstate="false">
+    <meta charset="UTF-8" />
+    <title></title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href='<%# ResolveUrl("~/Content/Content.css") %>' />
+    <link rel="stylesheet" type="text/css" href='<%# ResolveUrl("~/Content/Layout.css") %>' />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <asp:ContentPlaceHolder ID="Head" runat="server"></asp:ContentPlaceHolder>
+    <script type="text/javascript" src='<%# ResolveUrl("~/Content/Script.js") %>'></script>
+    <script type="text/javascript">
+        function OnMenuItemClick(s, e) {
+            e.processOnServer = false;
+            var itemName = e.item.name;
+            var check = CheckMenu.GetText();
+            CallbackPanel.PerformCallback(itemName);
+            ASPxCallbackPage.PerformCallback("");
+            leftPanel.SetClientVisible(true);
+            leftPanel.AdjustControl();
+            CheckMenu.SetText(itemName);
+        }
+
+        function OpenPopupWindowMention() {
+            var userWidth = screen.availWidth;
+            var userHeight = screen.availHeight;
+            leftPos = (userWidth - 900) / 2,
+            topPos = (userHeight - 600) / 2;
+            settings = 'modal,scrollBars=no,resizable=no,toolbar=no,menubar=no,location=no,directories=no,left=' + leftPos + ',top=' + topPos + ',width=900, height=600';
+            window.open("Content/Mentions.aspx", "Mentions", settings);
+        }
+
+        function OpenPopupWindowPolitiques() {
+            var userWidth = screen.availWidth;
+            var userHeight = screen.availHeight;
+            leftPos = (userWidth - 900) / 2,
+            topPos = (userHeight - 600) / 2;
+            settings = 'modal,scrollBars=no,resizable=no,toolbar=no,menubar=no,location=no,directories=no,left=' + leftPos + ',top=' + topPos + ',width=900, height=600';
+            window.open("Content/Politiques.aspx", "Politiques", settings);
+        }
+    </script>
+
+</head>
+<body>
+    <form id="form1" runat="server" class="form">
+        <dx:ASPxPanel runat="server" ID="HeaderPanel" ClientInstanceName="headerPanel" FixedPosition="WindowTop"
+            FixedPositionOverlap="true" CssClass="app-header">
+            <PanelCollection>
+                <dx:PanelContent runat="server">
+                    <div class="left-block">
+                        <dx:ASPxMenu runat="server" ID="LeftAreaMenu" ClientInstanceName="leftAreaMenu"
+                            ItemAutoWidth="false" ItemWrap="false" SeparatorWidth="0" EnableHotTrack="false"
+                            Width="100%" CssClass="header-menu" SyncSelectionMode="None">
+                            <ItemStyle VerticalAlign="Middle" CssClass="item" />
+                            <Items>
+                                <dx:MenuItem Text="" Name="ToggleLeftPanel" GroupName="LeftPanel">
+                                    <ItemStyle CssClass="toggle-item vertically-aligned" CheckedStyle-CssClass="checked selected">
+                                        <CheckedStyle CssClass="checked selected"></CheckedStyle>
+                                    </ItemStyle>
+                                    <Image Url="~/Content/Images/menu.svg" Height="18px" Width="18px" />
+                                </dx:MenuItem>
+                                <dx:MenuItem Text="" Name="Back">
+                                    <ItemStyle CssClass="toggle-item vertically-aligned" />
+                                    <Image Url="~/Content/Images/back.svg" Height="18px" Width="18px" />
+                                </dx:MenuItem>
+                                <dx:MenuItem Text="" ItemStyle-CssClass="image-item vertically-aligned" NavigateUrl="~/">
+                                    <Image SpriteProperties-CssClass="header-logo">
+                                        <SpriteProperties CssClass="header-logo"></SpriteProperties>
+                                    </Image>
+                                    <ItemStyle CssClass="image-item vertically-aligned"></ItemStyle>
+                                </dx:MenuItem>
+                            </Items>
+                            <ClientSideEvents ItemClick="onLeftMenuItemClick" />
+                        </dx:ASPxMenu>
+                    </div>
+
+                    <div class="right-block">
+                        <dx:ASPxMenu runat="server" ID="RightAreaMenu" ClientInstanceName="rightAreaMenu"
+                            ItemAutoWidth="false" ItemWrap="false" ShowPopOutImages="False"
+                            SeparatorWidth="0" ApplyItemStyleToTemplates="true" OnItemClick="RightAreaMenu_ItemClick"
+                            Width="100%" CssClass="header-menu">
+                            <ItemStyle VerticalAlign="Middle" CssClass="item" />
+                            <SubMenuItemStyle CssClass="item" />
+                            <SubMenuStyle CssClass="header-sub-menu" />
+                            <Items>
+                                <dx:MenuItem Name="AccountItem" ItemStyle-CssClass="image-item">
+                                    <ItemStyle CssClass="image-item"></ItemStyle>
+                                    <TextTemplate>
+                                        <div class="account-background">
+                                            <div runat="server" id="AccountImage" class="empty-image" />
+                                        </div>
+                                    </TextTemplate>
+                                    <Items>
+                                        <dx:MenuItem Name="SignInItem" Text="Connexion" NavigateUrl="~/Account/SignIn.aspx"></dx:MenuItem>
+                                        <dx:MenuItem Name="RegisterItem" Text="S'inscrire" NavigateUrl="~/Account/Register.aspx"></dx:MenuItem>
+                                        <dx:MenuItem Name="ModifierItem" Text="Modifier mon mot de passe" NavigateUrl="~/Account/ChangePassword.aspx">
+                                            <Image Height="16px" Url="Content/Images/edit.svg"></Image>
+                                        </dx:MenuItem>
+                                        <dx:MenuItem Name="MyAccountItem" Text="Mon compte" ItemStyle-CssClass="myaccount-item">
+                                            <ItemStyle CssClass="myaccount-item"></ItemStyle>
+                                            <TextTemplate>
+                                                <div class="user-info">
+                                                    <div class="avatar">
+                                                        <img runat="server" id="AvatarUrl" src="Content/Images/user.svg" />
+                                                    </div>
+                                                    <div class="text-container">
+                                                        <dx:ASPxLabel ID="UserNameLabel" runat="server" CssClass="user-name"></dx:ASPxLabel>
+                                                        <dx:ASPxLabel ID="EmailLabel" runat="server" CssClass="email"></dx:ASPxLabel>
+                                                    </div>
+                                                </div>
+                                            </TextTemplate>
+                                        </dx:MenuItem>
+                                        <dx:MenuItem Name="SignOutItem" Text="Deconnexion" Image-Url="Content/Images/sign-out.svg" Image-Height="16px">
+                                            <Image Height="16px" Url="Content/Images/sign-out.svg"></Image>
+                                        </dx:MenuItem>
+                                    </Items>
+                                </dx:MenuItem>
+                                <dx:MenuItem Text="" Name="ToggleRightPanel" GroupName="RightPanel">
+                                    <ItemStyle CssClass="toggle-item vertically-aligned" CheckedStyle-CssClass="checked selected">
+                                        <CheckedStyle CssClass="checked selected"></CheckedStyle>
+                                    </ItemStyle>
+                                    <Image Height="18px" SpriteProperties-CssClass="image">
+                                        <SpriteProperties CssClass="image"></SpriteProperties>
+                                    </Image>
+                                </dx:MenuItem>
+                            </Items>
+                            <ClientSideEvents ItemClick="onRightMenuItemClick" />
+                        </dx:ASPxMenu>
+                    </div>
+
+                    <div class="menu-container">
+                        <div>
+                            <dx:ASPxTextBox runat="server" ClientInstanceName="CheckMenu" ClientVisible="false"></dx:ASPxTextBox>
+                            <dx:ASPxMenu runat="server" ID="ApplicationMenu" ClientInstanceName="applicationMenu" AllowSelectItem="true"
+                                OnLoad="ApplicationMenu_Load" ItemAutoWidth="false" EnableSubMenuScrolling="true" AutoPostBack="false"
+                                ShowPopOutImages="True" SeparatorWidth="0" ItemWrap="false" CssClass="header-menu application-menu"
+                                Width="100%" HorizontalAlign="Right" OnItemDataBound="ApplicationMenu_ItemDataBound">
+                                <%--DataSourceID="ApplicationMenuDataSource"--%>
+                                <SettingsAdaptivity Enabled="true" EnableAutoHideRootItems="true" />
+                                <ItemStyle VerticalAlign="Middle" CssClass="item" SelectedStyle-CssClass="selected" HoverStyle-CssClass="hovered">
+                                    <SelectedStyle CssClass="selected"></SelectedStyle>
+                                    <HoverStyle CssClass="hovered"></HoverStyle>
+                                </ItemStyle>
+                                <ItemImage Width="22" Height="22" />
+                                <SubMenuStyle CssClass="header-sub-menu" />
+                                <AdaptiveMenuImage SpriteProperties-CssClass="adaptive-image">
+                                    <SpriteProperties CssClass="adaptive-image"></SpriteProperties>
+                                </AdaptiveMenuImage>
+                                <ClientSideEvents ItemClick="OnMenuItemClick" />
+                            </dx:ASPxMenu>
+                        </div>
+                    </div>
+                    <div class="dx-clear"></div>
+                </dx:PanelContent>
+            </PanelCollection>
+        </dx:ASPxPanel>
+
+        <dx:ASPxPanel runat="server" ID="LeftPanel" ClientInstanceName="leftPanel"
+            Collapsible="true" ScrollBars="Auto" FixedPosition="WindowLeft" CssClass="left-panel"
+            Paddings-Padding="0" Styles-ExpandBar-CssClass="expand-bar">
+            <Styles>
+                <ExpandBar CssClass="expand-bar"></ExpandBar>
+            </Styles>
+            <SettingsAdaptivity CollapseAtWindowInnerWidth="960" />
+            <SettingsCollapsing ExpandButton-Visible="false" ExpandEffect="PopupToRight" AnimationType="Slide" Modal="true">
+                <ExpandButton Visible="False"></ExpandButton>
+            </SettingsCollapsing>
+            <Paddings Padding="0px"></Paddings>
+            <PanelCollection>
+                <dx:PanelContent>
+                    <dx:ASPxCallbackPanel runat="server" ID="CallbackPanel" ClientInstanceName="CallbackPanel" OnCallback="LeftCallbackPanel_Callback">
+                        <PanelCollection>
+                            <dx:PanelContent runat="server">
+                                <asp:ContentPlaceHolder runat="server" ID="LeftPanelContent">
+                                </asp:ContentPlaceHolder>
+                                <dx:ASPxNavBar ID="navbarMain" ClientInstanceName="navbarMain" runat="server" AllowSelectItem="true" EnableAnimation="true"
+                                    AutoPostBack="false" AutoCollapse="true" Visible="true" ItemStyle-Wrap="True">
+                                    <ClientSideEvents ItemClick="function(s,e){
+                                                            e.processOnServer = false;
+                                                            var itemName = e.item.name;
+                                                            ASPxCallbackPage.PerformCallback(itemName);
+
+                                                        }" />
+
+                                    <%--
+                                                            Loading.Show();
+                                                            window.location.href=itemName;
+                                                            document.location.href = itemName;
+                                    --%>
+                                </dx:ASPxNavBar>
+                            </dx:PanelContent>
+                        </PanelCollection>
+                    </dx:ASPxCallbackPanel>
+                </dx:PanelContent>
+            </PanelCollection>
+            <ClientSideEvents Collapsed="onLeftPanelCollapsed" Init="onLeftPanelInit" />
+
+        </dx:ASPxPanel>
+
+        <dx:ASPxPanel runat="server" ID="RightPanel" ClientInstanceName="rightPanel"
+            FixedPosition="WindowRight" FixedPositionOverlap="true" Collapsible="true" Paddings-Padding="0"
+            ScrollBars="Auto" Width="260px" CssClass="right-panel" Styles-ExpandBar-CssClass="expand-bar">
+            <SettingsCollapsing ExpandButton-Visible="false" ExpandEffect="PopupToLeft" Modal="true" />
+            <PanelCollection>
+                <dx:PanelContent>
+                    <asp:ContentPlaceHolder ID="RightPanelContent" runat="server"></asp:ContentPlaceHolder>
+                </dx:PanelContent>
+            </PanelCollection>
+            <ClientSideEvents Collapsed="onRightPanelCollapsed" />
+        </dx:ASPxPanel>
+
+        <dx:ASPxPanel runat="server" ID="PageToolbarPanel" ClientInstanceName="pageToolbarPanel"
+            CssClass="page-toolbar-wrapper">
+            <PanelCollection>
+                <dx:PanelContent>
+                    <asp:ContentPlaceHolder runat="server" ID="PageToolbar" />
+                </dx:PanelContent>
+            </PanelCollection>
+            <ClientSideEvents Init="onPageToolbarInit" />
+        </dx:ASPxPanel>
+
+        <dx:ASPxCallbackPanel runat="server" ID="ASPxCallbackPage" ClientInstanceName="ASPxCallbackPage"
+            OnCallback="ASPxCallbackPage_Callback" Height="100%">
+            <PanelCollection>
+                <dx:PanelContent ID="PanelContent1" runat="server">
+                    <div class="content" id="pageContent">
+                        <asp:ContentPlaceHolder runat="server" ID="PageContent"></asp:ContentPlaceHolder>
+
+                    </div>
+                </dx:PanelContent>
+            </PanelCollection>
+            <ClientSideEvents EndCallback="function (s, e) {
+                                            ASPxCallbackPage.SetVisible(true);
+                                        }" />
+            <%--Loading.Hide();--%>
+        </dx:ASPxCallbackPanel>
+
+        <div class="footer-wrapper" id="footerWrapper">
+            <div class="footer">
+                <span class="footer-left">
+                    <a class="footer-link" href="http://www.jfrsystems-ci.com">&copy;2019 JFR-SYSTEMS</a>
+                </span>
+                <span class="footer-right">
+                    <a class="footer-link" href="#" onclick="OpenPopupWindowPolitiques
+                        ()">Politique de Confidentialité</a>
+                    <a class="footer-link" href="#" onclick="OpenPopupWindowMention()">Mentions Légales</a>
+                </span>
+            </div>
+        </div>
+        <%--<dx:ASPxSiteMapDataSource runat="server" ID="ApplicationMenuDataSource" SiteMapFileName="~/App_Data/ApplicationMenuDataSource.sitemap" />--%>
+        <dx:ASPxGlobalEvents runat="server">
+            <ClientSideEvents ControlsInitialized="onControlsInitialized" BrowserWindowResized="onBrowserWindowResized" />
+        </dx:ASPxGlobalEvents>
+
+        <dx:ASPxLoadingPanel ClientInstanceName="Loading" Text="Chargement..." runat="server" Modal="True"></dx:ASPxLoadingPanel>
+    </form>
+</body>
+</html>
