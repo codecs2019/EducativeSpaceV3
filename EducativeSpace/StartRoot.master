@@ -1,4 +1,4 @@
-<%@ Master Language="C#" AutoEventWireup="true" CodeFile="StartRoot.master.cs" Inherits="SoroZieApp.StartRoot" %>
+<%@ Master Language="C#" AutoEventWireup="true" CodeFile="StartRoot.master.cs" Inherits="JfrSystems.StartRoot" %>
 
 <!DOCTYPE html>
 
@@ -12,10 +12,9 @@
     <%--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">--%>
     <asp:ContentPlaceHolder ID="Head" runat="server"></asp:ContentPlaceHolder>
     <script type="text/javascript" src='<%# ResolveUrl("~/Content/Script.js") %>'></script>
-
-    <script type="text/javascript" src='<%# ResolveUrl("~/Scripts/jquery-1.6.4.min.js") %>'></script>
-    <script type="text/javascript" src='<%# ResolveUrl("~/Scripts/jquery.signalR-2.4.1.min.js") %>'></script>  
-    <script src='<%# ResolveUrl("~/signalR/hubs") %>'></script>   
+    <script type="text/javascript" src='<%# ResolveUrl("Scripts/jquery-1.6.4.min.js") %>'></script>
+    <script type="text/javascript" src='<%# ResolveUrl("Scripts/jquery.signalR-2.4.1.min.js") %>'></script>  
+    <script src='<%# ResolveUrl("signalR/hubs") %>'></script>   
     <script type="text/javascript">  
         $(document).ready(function () {
             var hub = $.connection.notificationHub;

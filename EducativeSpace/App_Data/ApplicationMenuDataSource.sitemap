@@ -1,31 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0">
   <siteMapNode url="javascript:void(0);">
-    <siteMapNode url="Default.aspx" title="Accueil">
+    <siteMapNode url="Default.aspx" title="Home">
     </siteMapNode>
-    <siteMapNode url="Article.aspx" title="Gestion des marchés et recouvrements">
+    <siteMapNode url="GridView.aspx" title="GridView">
     </siteMapNode>
-    <siteMapNode url="GridView" title="Gestion des projets">
+    <siteMapNode url="Scheduler.aspx" title="Scheduler">
     </siteMapNode>
-    <siteMapNode url="" title="Comptabilité Générale et Analytique">
-    </siteMapNode>
-    <siteMapNode url=".aspx" title="Immobilisations">
-    </siteMapNode>
-    <siteMapNode url="" title="Gestion budgétaire">
-    </siteMapNode>
-    <siteMapNode url="" title="Logistique et Parc Auto">
-    </siteMapNode>
-    <siteMapNode url="" title="Gestion de la maintenance">
-    </siteMapNode>
-    <siteMapNode url="" title="Gestion des stocks">
-    </siteMapNode>
-    <siteMapNode url="" title="Gestion des chantiers">
-    </siteMapNode>
-    <siteMapNode url="" title="Facturation">
-    </siteMapNode>
-    <siteMapNode url="Scheduler.aspx" title="Gestion des visites et RDV">
-    </siteMapNode>
-    <siteMapNode url="" title="Gestion RH">
+    <siteMapNode url="Article.aspx" title="Article">
     </siteMapNode>
   </siteMapNode>
 </siteMap>

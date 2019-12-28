@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/StartRoot.master" AutoEventWireup="true" CodeFile="FormUserLienSousMenu.aspx.cs" Inherits="SoroZieApp.Modules.Parametrages.FormUserLienSousMenu" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/StartRoot.master" AutoEventWireup="true" CodeFile="FormUserLienSousMenu.aspx.cs" Inherits="EducativeSpaceApp.Modules.Parametrages.FormUserLienSousMenu" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Head" runat="server">
     <link rel="stylesheet" type="text/css" href='<%# ResolveUrl("~/Content/GridView.css") %>' />
@@ -6,7 +6,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="LeftPanelContent" runat="server">
 </asp:Content>
-<asp:Content ID="Content3" ContentPlaceHolderID="RightPanelContent" runat="server">
+<asp:Content ID="Content3" ContentPlaceHolderID="RightPanelContent" runat="server"> 
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="PageToolbar" runat="server">
     <dx:ASPxMenu runat="server" ID="PageToolbar" ClientInstanceName="pageToolbar"
@@ -65,7 +65,7 @@
                 </PropertiesComboBox>
             </dx:GridViewDataComboBoxColumn>
             <dx:GridViewDataComboBoxColumn Caption="UserName" FieldName="UserId" Width="15%">
-                <PropertiesComboBox ValueField="UserId" TextField="UserName" ValueType="System.Guid" DataSourceID="SqlUserDataSource">
+                <PropertiesComboBox ValueField="UserId" TextField="UserName" ValueType="System.Guid" DataSourceID="SqlUserDataSource"> 
                     <ValidationSettings RequiredField-IsRequired="true" Display="Dynamic"></ValidationSettings>
                 </PropertiesComboBox>
                 <%--<EditItemTemplate>

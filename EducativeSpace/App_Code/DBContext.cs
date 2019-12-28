@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using DevExpress.XtraScheduler;
 
-namespace SoroZieApp.Model
+namespace JfrSystems.Model
 {
     // Sample Data
     public class Issue

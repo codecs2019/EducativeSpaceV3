@@ -6,10 +6,10 @@
     <script type="text/javascript" src='<%# ResolveUrl("~/Content/GridView.js") %>'></script>
     <style>
         table.foobar td {
-            padding: 1%;
-            text-align: left;
+            padding: 1%; 
+            text-align: left;   
             width: 300px;
-        }
+        } 
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="PageToolbar" runat="Server">

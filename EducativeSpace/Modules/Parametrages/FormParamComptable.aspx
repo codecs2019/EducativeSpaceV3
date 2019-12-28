@@ -9,7 +9,7 @@
         .auto-style6 {
             width: 8px;
         }
-        .auto-style7 {
+        .auto-style7 { 
             height: 6px;
         }
         .auto-style8 {

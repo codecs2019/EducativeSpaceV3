@@ -2,7 +2,7 @@
 body
 {
     /* DXCOMMENT: Duplicate a font family and font size from the web.config (devexpress->themes->font settings) for the web-site's HTML content */
-    font: 14px Calibri, 'Trebuchet MS', sans-serif;
+    font: 16px Calibri, 'Trebuchet MS', sans-serif;
 }
 
 /* Article Layout */
@@ -164,17 +164,17 @@ body
 .text-content a
 {
     /* DXCOMMENT: Duplicates color from the web.config (devexpress->themes->baseColor) */
-    color: #007BF7;
+    color: #4796CE;
 }
 .text-content a:visited
 {
     /* DXCOMMENT: Duplicates color from the web.config (devexpress->themes->baseColor) */
-    color: #005CB9; /* 25% black overlay */
+    color: #35709A; /* 25% black overlay */
 }
 .text-content a:hover
 {
     /* DXCOMMENT: Duplicates color from the web.config (devexpress->themes->baseColor) */
-    color: #59A9F9; /* 35% white overlay */
+    color: #87BADF; /* 35% white overlay */
 }
 
 .text-content b, .text-content strong
@@ -185,7 +185,7 @@ body
 mark
 {
     /* DXCOMMENT: Duplicates color from the web.config (devexpress->themes->baseColor) */
-    background-color: #007BF7;
+    background-color: #4796CE;
     color: #fff;
 }
 

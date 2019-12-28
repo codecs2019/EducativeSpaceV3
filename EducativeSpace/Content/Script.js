@@ -44,7 +44,6 @@
             adjustPageControls();
         }
     }
-
     function toggleRightPanel() {
         rightPanel.Toggle();
     }
@@ -82,12 +81,7 @@
 
     function onLeftPanelCollapsed(s, e) {
         leftAreaMenu.GetItemByName("ToggleLeftPanel").SetChecked(false);
-        leftPanel.AdjustControl();
-
     }
-
-
-   
 
     window.onControlsInitialized = onControlsInitialized;
     window.onBrowserWindowResized = onBrowserWindowResized;

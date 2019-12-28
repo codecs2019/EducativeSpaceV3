@@ -11,7 +11,7 @@ using OfficeOpenXml;
 using System.Collections.Generic;
 using Microsoft.AspNet.SignalR;
 
-namespace ErpMasterSuite.Models
+namespace EducativeSpace.Models
 {
     public class Cl_Fonction
     {
@@ -61,9 +61,7 @@ namespace ErpMasterSuite.Models
             return result;
         }
 
-
-
-
+        
         public static string Appel_synchroneGet(string url)
         {
             var httpWebRequest = (HttpWebRequest)WebRequest.Create(url);
@@ -598,6 +596,107 @@ namespace ErpMasterSuite.Models
             return sResultat;
 
 
+        }
+
+        // __________________________________________________________________________________________________________________________________________//
+        public static Boolean Verification_Code_kevin(String sTable, String sColonne, DateTime sValeur, String sColonne1, int sValeur1, int sValeur2, string Username)
+        {
+            Boolean sResultat = false;
+
+            DataSet ds = new DataSet();
+            ArrayList cle = new ArrayList();
+            ArrayList val = new ArrayList();
+
+            cle.Add("@SITE_ID");
+            val.Add(sValeur2);
+            cle.Add("@DATEECRI");
+            val.Add(sValeur);
+            cle.Add("@SENDER");
+            val.Add("0");
+            cle.Add("@USERNAM");
+            val.Add(Username);
+
+            ds = Cl_Fonction.Extraction_ds("LISTE_CLOT_DATE", cle, val);
+            int tot = ds.Tables[0].Rows.Count;
+            if (tot > 0)
+            {
+                sResultat = true;
+            }
+            else
+            {
+                sResultat = false;
+            }
+
+            return sResultat;
+        }
+
+
+        public static Boolean Verification_Code_kev_ex(String sTable, String sColonne, DateTime sValeur, int sValeur2, string Username)
+        {
+            Boolean sResultat = false;
+
+            DataSet ds = new DataSet();
+            ArrayList cle = new ArrayList();
+            ArrayList val = new ArrayList();
+
+            cle.Add("@SITE_ID");
+            val.Add(sValeur2);
+            cle.Add("@DATEECRI");
+            val.Add(sValeur);
+            cle.Add("@SENDER");
+            val.Add("0");
+            cle.Add("@USERNAM");
+            val.Add(Username);
+            ds = Cl_Fonction.Extraction_ds("LISTE_CLOT_DATE_EXI", cle, val);
+            int tot = ds.Tables[0].Rows.Count;
+
+            if (tot > 0)
+            {
+                sResultat = true;
+            }
+            else
+            {
+                sResultat = false;
+            }
+
+            return sResultat;
+        }
+
+
+        public static Boolean Verification_Code_ke(String sTable, String sColonne, String sValeur, String sColonne1, int sValeur1, int sValeur2)
+        {
+            Boolean sResultat = false;
+            using (SqlConnection cnx = new SqlConnection(Str()))
+            {
+                cnx.Open();
+                String sCmd = String.Format("SELECT {0} FROM {1} WHERE {0}='{2}'  AND {3}='{4}' AND SITE_ID='{5}' ", sColonne, sTable, sValeur, sColonne1, sValeur1, sValeur2);
+                DataTable Dt = new DataTable();
+
+                SqlCommand cmd = new SqlCommand(sCmd, cnx) { CommandType = CommandType.Text };
+                SqlDataAdapter Da = new SqlDataAdapter(cmd);
+                try
+                {
+                    Da.Fill(Dt);
+                    if (Dt.Rows.Count > 0)
+                    {
+                        sResultat = true;
+                    }
+                    else
+                    {
+                        sResultat = false;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw (ex);
+                }
+                finally
+                {
+                    cnx.Close();
+                }
+
+            }
+            return sResultat;
         }
 
         public static Int32 Numero_Auto(Int32 i, String sTable, String sColonne, int sSite)
@@ -1505,6 +1604,41 @@ namespace ErpMasterSuite.Models
             return dt;
         }
 
+        public static void InputSpy(string Libelle, string TypeAction, string CodeVendeur, string Username, int SiteId, int Exercice)
+        {
+            ArrayList cle = new ArrayList();
+            ArrayList val = new ArrayList();
+
+
+            int num = Numero_Auto(1, "E_CTUSER", "NUMMOUCHARD", SiteId);
+
+            cle.Add("@NUMMOUCHARD");
+            val.Add(num);
+
+            cle.Add("@LIBELLE");
+            val.Add(Libelle);
+
+            cle.Add("@TYPEACTION");
+            val.Add(TypeAction);
+
+            cle.Add("@CODE_VENDEUR");
+            val.Add(CodeVendeur);
+
+            cle.Add("@USERNAME");
+            val.Add(Username);
+
+            cle.Add("@SITE_ID");
+            val.Add(SiteId);
+
+            cle.Add("@EXERCICE");
+            val.Add(Exercice);
+
+
+            Execute_Commande_StoreProc("SPYAGENT_roy", cle, val);
+
+
+        }
+
         public static string ImportDataTableToDataBase(string nameTable, DataTable dt)
         {
             using (SqlConnection connection = new SqlConnection(Str()))
@@ -1578,6 +1712,44 @@ namespace ErpMasterSuite.Models
 
         }
 
+        public static Boolean Verification_HTTVA(String sTable, String sColonne, String sValeur, String sColonne1, int sValeur1, string sColonne2, int sValeur2)
+        {
+            Boolean sResultat = false;
+            using (SqlConnection cnx = new SqlConnection(Str()))
+            {
+                cnx.Open();
+                String sCmd = String.Format("SELECT {0} FROM {1} WHERE {0}='{2}'  AND {3}='{4}' AND {5}='{6}' ", sColonne, sTable, sValeur, sColonne1, sValeur1, sColonne2, sValeur2);
+                DataTable Dt = new DataTable();
+
+                SqlCommand cmd = new SqlCommand(sCmd, cnx) { CommandType = CommandType.Text };
+                SqlDataAdapter Da = new SqlDataAdapter(cmd);
+                try
+                {
+                    Da.Fill(Dt);
+                    if (Dt.Rows.Count > 0)
+                    {
+                        sResultat = true;
+                    }
+                    else
+                    {
+                        sResultat = false;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw (ex);
+                }
+                finally
+                {
+                    cnx.Close();
+                }
+
+            }
+            return sResultat;
+
+
+        }
+
 
         //public void ImageViaUploadControl(FileUploadCompleteEventArgs e, string resultFilePath, string url, string module, string index, string ID, string typ, string tid, string username, string date)
         //{
@@ -1619,4 +1791,5 @@ namespace ErpMasterSuite.Models
         //}
 
     }
+
 }

@@ -58,6 +58,19 @@
                                 </LayoutItemNestedControlCollection>
                             </dx:LayoutItem>
 
+                               <dx:LayoutItem Caption="Site" HelpText="Merci de renseigner votre site">
+                                <LayoutItemNestedControlCollection>
+                                    <dx:LayoutItemNestedControlContainer>
+                                        <dx:ASPxComboBox ID="cmbSite" runat="server" Width="100%" ValueField="CHAINE" TextField="LIBELLE_SITE" OnLoad="cmbSite_Load">
+                                            <ValidationSettings Display="Dynamic" SetFocusOnError="true" ErrorTextPosition="Bottom" ErrorDisplayMode="ImageWithText">
+                                                <RequiredField IsRequired="true" ErrorText="Le site est requis" />
+                                            </ValidationSettings>
+                                        </dx:ASPxComboBox>
+                                    </dx:LayoutItemNestedControlContainer>
+                                </LayoutItemNestedControlCollection>
+                            </dx:LayoutItem>
+
+
                             <dx:LayoutItem ShowCaption="False" Paddings-PaddingTop="13">
                                 <LayoutItemNestedControlCollection>
                                     <dx:LayoutItemNestedControlContainer>

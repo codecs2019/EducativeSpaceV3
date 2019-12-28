@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/StartRoot.master" AutoEventWireup="true" CodeFile="FormLienSousMenu.aspx.cs" Inherits="SoroZieApp.Modules.Parametrages.FormLienSousMenu" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/StartRoot.master" AutoEventWireup="true" CodeFile="FormLienSousMenu.aspx.cs" Inherits="EducativeSpaceApp.Modules.Parametrages.FormLienSousMenu" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Head" runat="server">
     <link rel="stylesheet" type="text/css" href='<%# ResolveUrl("~/Content/GridView.css") %>' />
@@ -10,7 +10,7 @@
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="PageToolbar" runat="server">
     <dx:ASPxMenu runat="server" ID="PageToolbar" ClientInstanceName="pageToolbar"
-        ItemAutoWidth="false" ApplyItemStyleToTemplates="true" ItemWrap="false"
+        ItemAutoWidth="false" ApplyItemStyleToTemplates="true" ItemWrap="false"  
         AllowSelectItem="false" SeparatorWidth="0"
         Width="100%" CssClass="page-toolbar">
         <ClientSideEvents ItemClick="onPageToolbarItemClick" />

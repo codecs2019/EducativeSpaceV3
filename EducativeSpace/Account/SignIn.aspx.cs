@@ -1,10 +1,10 @@
 using System;
 using DevExpress.Web;
-using SoroZieApp.Models;
 using System.Data;
 using System.Collections;
 using System.Web;
-using ErpMasterSuite.Models;
+using JfrSystems.Models;
+using EducativeSpace.Models;
 
 namespace SoroZieApp
 {
@@ -23,9 +23,13 @@ namespace SoroZieApp
                 if (AuthHelper.SignIn(UserNameTextBox.Text, PasswordButtonEdit.Text) == 0)
                 {
                     ApplicationUser user = HttpContext.Current.Session["User"] as ApplicationUser;
+                    Session["GlobalConnectionString"] = cmbSite.Value;
                     int site_id = 0;
                     if (!string.IsNullOrEmpty(user.SiteID))
-                        site_id = Convert.ToInt32(user.SiteID);
+
+                    site_id = Convert.ToInt32(user.SiteID);
+                   // "1" = site_id.ToString();
+                   //"1" = user.Exercice;
 
                     GestionConnexion(user.Rolename, 1, site_id);
                     Response.Redirect("~/");
@@ -76,7 +80,7 @@ namespace SoroZieApp
             val7.Add(nommachine);
 
             cle7.Add("@EXO");
-            val7.Add(0);
+            val7.Add("2019");
 
             cle7.Add("@SITE_ID");
             val7.Add(site_id);
@@ -89,5 +93,19 @@ namespace SoroZieApp
             Session["ConectMou"] = "1";
         }
 
+
+        protected void cmbSite_Load(object sender, EventArgs e)
+        {
+            DataSet ds = new DataSet();
+            ArrayList cle = new ArrayList();
+            ArrayList val = new ArrayList();
+
+            cle.Add("@INDEX");
+            val.Add("4");
+
+            ds = Cl_Fonction.Extraction_ds("PS_SITE", cle, val);
+            cmbSite.DataSource = ds;
+            cmbSite.DataBind();
+        }
     }
 }

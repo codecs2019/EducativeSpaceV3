@@ -1,4 +1,4 @@
-using ErpMasterSuite.Models;
+using EducativeSpace.Models;
 using System;
 using System.Collections;
 using System.Web.Security;

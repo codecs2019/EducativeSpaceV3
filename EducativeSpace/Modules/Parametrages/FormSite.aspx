@@ -12,7 +12,7 @@
         .auto-style7 {
             height: 6px;
         }
-        .auto-style8 {
+        .auto-style8 { 
             width: 236px;
         }
         .templateTable

@@ -5,10 +5,10 @@ using DevExpress.Web;
 using System.Collections;
 using System.Data;
 using System.Web;
-using ErpMasterSuite.Models;
-using SoroZieApp.Models;
+using EducativeSpace.Models;
+using JfrSystems.Models;
 
-namespace SoroZieApp
+namespace JfrSystems
 {
     public partial class Root : MasterPage
     {

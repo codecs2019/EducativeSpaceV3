@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/StartRoot.master" AutoEventWireup="true" CodeFile="FormProfilLien.aspx.cs" Inherits="SoroZieApp.Modules.Parametrages.FormProfilLien" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/StartRoot.master" AutoEventWireup="true" CodeFile="FormProfilLien.aspx.cs" Inherits="EducativeSpaceApp.Modules.Parametrages.FormProfilLien" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Head" runat="server">
     <link rel="stylesheet" type="text/css" href='<%# ResolveUrl("~/Content/GridView.css") %>' />
@@ -356,7 +356,7 @@
     </asp:SqlDataSource>
 
     <asp:SqlDataSource ID="SqlDataStatut" runat="server" ConnectionString="<%$ ConnectionStrings:MasterSuiteConnectionString %>"
-        SelectCommand="gmr.PS_TBL_STATUT" SelectCommandType="StoredProcedure">
+        SelectCommand="Parametres.[PS_TBL_STATUT]" SelectCommandType="StoredProcedure">
         <SelectParameters>
             <asp:Parameter DefaultValue="0" Name="SENDER" Type="Int32" />
         </SelectParameters>

@@ -2,9 +2,9 @@
 using DevExpress.Web;
 using System.Data;
 using System.Collections;
-using ErpMasterSuite.Models;
-using SoroZieApp.Models;
 using System.Web;
+using EducativeSpace.Models;
+using JfrSystems.Models;
 
 public partial class Web_FormTypeDocProfil : System.Web.UI.Page
 {

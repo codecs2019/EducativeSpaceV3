@@ -1,6 +1,6 @@
-﻿<%@ Application Language="C#" %>
+<%@ Application Language="C#" %>
 <%@ Import Namespace="DevExpress.Web" %>
-<%@ Import Namespace="SoroZieApp.Models" %>
+<%@ Import Namespace="JfrSystems.Models" %>
 
 <script RunAt="server">
     static ApplicationUser user;
@@ -19,16 +19,7 @@
     void Application_Error(object sender, EventArgs e)
     {
         // Code that runs when an unhandled error occurs
-        user = null;
-
-        try
-        {
-            user = HttpContext.Current.Session["User"] as ApplicationUser;
-        }
-        catch
-        {
-
-        }
+        user = HttpContext.Current.Session["User"] as ApplicationUser;
         if (user == null)
         {
             Response.Redirect("~/");

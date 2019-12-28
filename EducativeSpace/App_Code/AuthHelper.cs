@@ -1,10 +1,10 @@
-using ErpMasterSuite.Models;
+using EducativeSpace.Models;
 using System.Collections;
 using System.Data;
 using System.Web;
 using System.Web.Security;
 
-namespace SoroZieApp.Models
+namespace JfrSystems.Models
 {
     public class ApplicationUser
     {

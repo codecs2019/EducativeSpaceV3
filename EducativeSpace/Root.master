@@ -1,4 +1,4 @@
-<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Root.master.cs" Inherits="SoroZieApp.Root" %>
+<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Root.master.cs" Inherits="JfrSystems.Root" %>
 
 <!DOCTYPE html>
 
@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <asp:ContentPlaceHolder ID="Head" runat="server"></asp:ContentPlaceHolder>
     <script type="text/javascript" src='<%# ResolveUrl("~/Content/Script.js") %>'></script>
+
     <script type="text/javascript">
         function OnMenuItemClick(s, e) {
             e.processOnServer = false;

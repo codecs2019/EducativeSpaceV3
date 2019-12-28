@@ -1,4 +1,4 @@
-(function () {
+(function() {
     function onGridViewInit(s, e) {
         AddAdjustmentDelegate(adjustGridView);
         updateToolbarButtonsState();
@@ -13,11 +13,11 @@
         var enabled = gridView.GetSelectedRowCount() > 0;
         pageToolbar.GetItemByName("Delete").SetEnabled(enabled);
         pageToolbar.GetItemByName("Export").SetEnabled(enabled);
+
         pageToolbar.GetItemByName("Edit").SetEnabled(gridView.GetFocusedRowIndex() !== -1);
     }
-
     function onPageToolbarItemClick(s, e) {
-        switch (e.item.name) {
+        switch(e.item.name) {
             case "ToggleFilterPanel":
                 toggleFilterPanel();
                 break;
@@ -35,16 +35,11 @@
                 break;
         }
     }
-
     function deleteSelectedRecords() {
-        if (confirm('Confirmer la suppression ?')) {
-            //gridView.PerformCallback('delete');
-            var index = gridView.GetFocusedRowIndex();
-            gridView.DeleteRow(index);
-
+        if(confirm('Confirm Delete?')) {
+            gridView.PerformCallback('delete');
         }
     }
-
     function onFiltersNavBarItemClick(s, e) {
         var filters = {
             All: "",

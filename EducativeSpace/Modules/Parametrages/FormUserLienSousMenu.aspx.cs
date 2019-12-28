@@ -1,16 +1,9 @@
-﻿using DevExpress.Web;
-using ErpMasterSuite.Models;
+﻿
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Web;
-using System.Web.Security;
-using System.Web.UI;
-using System.Web.UI.WebControls;
+using EducativeSpace.Models;
+using JfrSystems.Models;
 
-namespace SoroZieApp.Modules.Parametrages
+namespace EducativeSpaceApp.Modules.Parametrages
 {
     public partial class FormUserLienSousMenu : System.Web.UI.Page
     {

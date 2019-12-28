@@ -1,9 +1,9 @@
 using System;
 using System.Web.UI;
 using System.Web;
-using SoroZieApp.Models;
+using JfrSystems.Models;
 
-namespace SoroZieApp
+namespace JfrSystems
 {
     public partial class StartRoot : MasterPage
     {
@@ -13,7 +13,7 @@ namespace SoroZieApp
         {
             if (!string.IsNullOrEmpty(Page.Header.Title))
                 Page.Header.Title += " - ";
-            Page.Header.Title = Page.Header.Title + "eMasterSuite ERP";
+            Page.Header.Title = Page.Header.Title + "EducativeSpace";
 
             Page.Header.DataBind();
         }

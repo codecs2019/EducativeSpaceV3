@@ -2,9 +2,9 @@
 using DevExpress.Web;
 using System.Data;
 using System.Collections;
-using ErpMasterSuite.Models;
-using SoroZieApp.Models;
 using System.Web;
+using EducativeSpace.Models;  
+using JfrSystems.Models;
 
 public partial class Web_FormJournalConnexion : System.Web.UI.Page
 {
@@ -12,7 +12,7 @@ public partial class Web_FormJournalConnexion : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         user = HttpContext.Current.Session["User"] as ApplicationUser;
-        chargerGrid();
+        chargerGrid();  
     }
 
     protected void chargerGrid()

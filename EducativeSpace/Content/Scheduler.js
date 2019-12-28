@@ -3,12 +3,9 @@
         switch (e.item.name) {
             case 'Export':
                 // Your Exporting logic
-                //gridView.ExportTo(ASPxClientGridViewExportFormat.Xlsx);
-                //scheduler.ExportTo
                 break;
             case 'Print':
                 // Your Printing logic
-                    
                 break;
         }
     }

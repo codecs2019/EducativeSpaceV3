@@ -1,6 +1,4 @@
 ﻿using DevExpress.Web;
-using ErpMasterSuite.Models;
-using SoroZieApp.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,10 +6,13 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using EducativeSpace.Models;
+using JfrSystems.Models;
+
 
 public partial class Modules_Parametrages_FormParamUpload : System.Web.UI.Page
 {
-    protected void Page_Load(object sender, EventArgs e)
+    protected void Page_Load(object sender, EventArgs e) 
     {
         chargerGrid();
     }

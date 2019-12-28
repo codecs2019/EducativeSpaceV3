@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/StartRoot.master" AutoEventWireup="true" CodeFile="FormMenu.aspx.cs" Inherits="SoroZieApp.Modules.Parametrages.FormMenu" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/StartRoot.master" AutoEventWireup="true" CodeFile="FormMenu.aspx.cs" Inherits="EducativeSpace.Modules.Parametrages.FormMenu" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Head" runat="server">
     <link rel="stylesheet" type="text/css" href='<%# ResolveUrl("~/Content/GridView.css") %>' />
@@ -12,7 +12,7 @@
     <dx:ASPxMenu runat="server" ID="PageToolbar" ClientInstanceName="pageToolbar"
         ItemAutoWidth="false" ApplyItemStyleToTemplates="true" ItemWrap="false"
         AllowSelectItem="false" SeparatorWidth="0"
-        Width="100%" CssClass="page-toolbar">
+        Width="100%" CssClass="page-toolbar"> 
         <ClientSideEvents ItemClick="onPageToolbarItemClick" />
         <SettingsAdaptivity Enabled="true" EnableAutoHideRootItems="true"
             EnableCollapseRootItemsToIcons="true" CollapseRootItemsToIconsAtWindowInnerWidth="600" />
